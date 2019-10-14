@@ -11,5 +11,6 @@ public class MiniApplication {
 
   public static void run(Class<?> cls, String[] args) {
     System.out.println("hello miniSpring");
+	  System.out.println("test");
   }
 }
