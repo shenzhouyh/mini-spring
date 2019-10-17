@@ -1,7 +1,7 @@
 package com.imooc.shenzhouyh.web.server;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.imooc.shenzhouyh.web.serverlet.TestServlet;
+import com.imooc.shenzhouyh.web.serverlet.DispatcherServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardContext;
@@ -38,11 +38,11 @@ public class TomcatServer {
 		context.setPath("");
 		//设置默认的生命周期
 		context.addLifecycleListener(new Tomcat.FixContextListener());
-		TestServlet testServlet = new TestServlet();
+		DispatcherServlet testServlet = new DispatcherServlet();
 		//tomcat容器添加servlet，并且设置为异步调用
-		Tomcat.addServlet(context, "testServlet", testServlet).setAsyncSupported(true);
+		Tomcat.addServlet(context, "dispatcherServlet", testServlet).setAsyncSupported(true);
 		//配置访问路径
-		context.addServletMappingDecoded("/test.json", "testServlet");
+		context.addServletMappingDecoded("/", "dispatcherServlet");
 		//获取host容器，并将context容器添加进去
 		tomcat.getHost().addChild(context);
 		/*
