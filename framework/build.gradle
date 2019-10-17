@@ -13,4 +13,15 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    //引入tomcat容器
+    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.5.23'
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    //引入ThreadFactoryBuilder，创建线程池
+    compile group: 'com.google.guava', name: 'guava', version: '27.0.1-jre'
+
+}
+//设置gradle的编码方式，避免在编译时产生编码GBK的不可映射字符错误
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
